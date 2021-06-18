@@ -12,7 +12,7 @@ interpolation binding syntax - This is the syntax that angular uses to add varia
 
 On an `<input>` component, if you use the ngModel prop, and pass to it the name of a piece of state, angular sets up a two-way bridge for the data with that.
 
-`*ngFor` is angular’s repeater directive. It will repeat the element that it is attached to,
+`*ngFor` is angular’s repeater directive. It will repeat the element that it is attached to. You can also use interpolation binding syntax inside an `*ngFor`, for things like dynamic routes.
 
 `*ngIf` is angular’s conditional rendering mechanism. If the variable passed to `*ngIf` is not defined, the whole section wrapped by this wrapper will not render. Inside the string that you pass to `*ngIf`, you can just write a standard JavaScript expression that evaluates to a boolean.
 
@@ -45,3 +45,13 @@ Services can be injected into other services. This is a practice called “servi
 Angular only binds to public component properties. This is important when working with services, because you have to make them public fields on the components you will use for binding.
 
 When you use a service in your component's HTML template, this binds the service that you imported into your TypeScript template as a constructor parameter.
+
+Adding a colon to a path in a route indicates that that is the parameter for that route, and you can pass data into a component this way.
+
+The Angular `ActivatedRoute` holds information about the current route of the page, and allows you to get things like parameters passed via routes to the components.
+
+The Angular `Location` holds information about the current browser state, and allows you to do things like navigate back to where you were.
+
+TypeScript has a "Non-Null assertion operator".
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
+This tells TypeScript that something isn't or couldn't be null, when TypeScript thinks that it could be.
