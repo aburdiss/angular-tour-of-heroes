@@ -1,4 +1,4 @@
-# Angular Training Notes
+# Angular.io Tour of Heroes Training Notes
 
 You will need to take a course on TypeScript to get more familiar with Angular in general.
 
@@ -55,3 +55,15 @@ The Angular `Location` holds information about the current browser state, and al
 TypeScript has a "Non-Null assertion operator".
 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
 This tells TypeScript that something isn't or couldn't be null, when TypeScript thinks that it could be.
+
+The Angular HTTPClient returns an RxJS Observable object. Using `HTTPClient.get()` returns what `fetch().then(resp => resp.json).then(data => /* Use the data */)` usually would, in a synchronous API without callbacks. If you want to catch errors, you can use `.pipe()` (from RxJS) on the after calling `HTTPClient.get()` to handle errors.
+
+## IMPORTANT:
+
+Although a component may delegate deleting or adding an element from the server, in Angular, that component is responsible for updating its own display as well.
+
+Observables by default don't do any action unless somethign subscribes. If you are deleting data from a server, your component has to subscribe from your service's delete method, even though your class can't really do anything with the empty observable it returns. But if your class doesn't subscribe, the observable method will not run.
+
+When iterating over an array of observables, it is convention to title the loop variable ending with a dollar sign. `*ngFor` cannot do anything with observables, so you need to pipe the variable to `async`
+
+You can subscribe to a subject just as you would an observable.
